@@ -18,12 +18,14 @@ const double neutral = 2.0;
 // **Add your implementation for sub function that you are going to use for binary searching
 
 // **Don't forget to add header comments before each function using the following format:
-// **<Describe what this function does
-// Parameters:
-//      **<parameter name> -- <description of parameter>
-//      **<parameter name> -- <description of parameter>
-//      **<parameter name> -- <description of parameter>
-//      ...
-// Returns:
-//      **<describe meaning of return value or put "nothing" if this is a function declared void>
+    // **<Describe what this function does
+    // Parameters:
+    //      **<parameter name> -- <description of parameter>
+    //      **<parameter name> -- <description of parameter>
+    //      **<parameter name> -- <description of parameter>
+    //      ...
+    // Returns:
+    //      **<describe meaning of return value or put "nothing" if this is a function declared void>
+    // Possible Errors:
+    //      **<describe possible errors>
 //
