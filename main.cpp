@@ -91,6 +91,9 @@ int main() {
 //      database - the word database
 // Returns:
 //      true indicates database successfully built, false indicates a problem
+//  Possible Errors:
+//      could not read file
+//      database full
 bool BuildDatabase(const string& fileName, Database& database) {
     assert(false);
 }
@@ -102,6 +105,8 @@ bool BuildDatabase(const string& fileName, Database& database) {
 //      review - the movie review text
 // Returns:
 //      true indicates database successfully built, false indicates a problem
+// Possible Errors:
+//      none
 double AnalyzeReview(const Database& database, const string& review) {
     assert(false);
 }
