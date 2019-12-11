@@ -20,7 +20,7 @@ The second difference you will notice is that in Lab 3 the user can type in a re
 ## Files you are given
 In this lab, you are given all the files you will need for your CLion project.  
 
-* **CMakeLists.txt** - This contains the information necessary to build the file.  This file should not be modified.
+* **CMakeLists.txt** - This contains the information necessary to build the project.  This file should not be modified.
 
 *	**main.cpp** – This file contains a completed main routine (which should not be modified) and a skeleton of the functions *BuildDatabase* and *AnalyzeReview* that you need to write.
 
