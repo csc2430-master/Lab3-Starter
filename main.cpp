@@ -6,6 +6,7 @@
 // Class: CSC 2430 Winter 2020
 // Author: Max Benson
 #include <fstream>
+#include <sstream>
 #include <chrono>
 #include <assert.h>
 #include "database.h"
