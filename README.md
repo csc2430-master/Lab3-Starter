@@ -1,7 +1,7 @@
 # LAB 3 - Semantic Analysis, Part 2
 
 ## Goal
-Reimplement the database ADT you developed in Lab 2 using C++ _struct_'s with the words stored in sorted order.  In addition, allow the user to type in the text for a movie review so the program can predict what its rating will be.  This assignment will give you practice using _struct_'s and binary search.
+Reimplement the database ADT you developed in Lab 2 using C++ `struct`'s with the words stored in sorted order.  In addition, allow the user to type in the text for a movie review so the program can predict what its rating will be.  This assignment will give you practice using `struct`'s and binary search.
 
 ## Sample Run
 
@@ -22,19 +22,19 @@ In this lab, you are given all the files you will need for your CLion project.
 
 * **CMakeLists.txt** - This contains the information necessary to build the project.  This file should not be modified.
 
-*	**main.cpp** – This file contains a completed main routine (which should not be modified) and a skeleton of the functions *BuildDatabase* and *AnalyzeReview* that you need to write.
+*	**main.cpp** – This file contains a completed main routine (which should not be modified) and a skeleton of the functions `BuildDatabase` and `AnalyzeReview` that you need to write.
 
 *	**database.h** – This file has been completed for you.  It declares the four database interface functions used to access the database ADT.  These functions will be implemented in **database.cpp**.  This file should not be modified.
 
-*	**database.cpp** – As in Lab 3, except for *#include* and the definition of the constant _neutral_, the rest of this file’s implementation is left up to you.  You should finish the header comment for the file and add implementations for the four database interface functions.   Make sure a header comment precedes each of these four functions. 
+*	**database.cpp** – As in Lab 2, except for `#include` and the definition of the constant `neutral`, the rest of this file’s implementation is left up to you.  You should finish the header comment for the file and add implementations for the four database interface functions.   Make sure a header comment precedes each of these four functions. 
 
 ##	The new database data definition
 
-A _struct_ is used to group the data into a single “package.”  That makes it possible to simplify the declaration of the database in the main program.  Instead of declaring three arrays and a size, we simply declare a variable of type _Database_.
+A `struct` is used to group the data into a single “package.”  That makes it possible to simplify the declaration of the database in the main program.  Instead of declaring three arrays and a size, we simply declare a variable of type `Database`.
 
-In addition, when we pass the database as a parameter, we only have to pass a reference to a single parameter.  NOTE: it is important that to pass this parameter by reference!
+In addition, when we pass the database as a parameter, we only have to pass a reference to a _single parameter_.  NOTE: it is important that to pass this parameter by reference!
 
-The _Database_ _struct_ consists of an array of _Record_ _struct_’s and the count of the number of elements in the database:
+The `Database` `struct` consists of an array of `Record` `struct`’s and the count of the number of elements in the database:
 
 ```
 typedef struct {
@@ -43,7 +43,7 @@ typedef struct {
 } Database;
 ```
 
-The _Record_ _struct_ consists of one _word_ along with its occurrence count and the total of its scores.  Grouping them together like this is more natural than using parallel arrays.
+The `Record` `struct` consists of one `word` along with its occurrence count and the total of its scores.  Grouping them together like this is more natural than using parallel arrays.
 
 ```
 typedef struct {
@@ -53,15 +53,17 @@ typedef struct {
 } Record;
 ```
 
+Note: in the given code on file **database.h** you will see that `Record` is defined *before* `Database`.
+
 ## Recommended implementation order
 
 It will probably be simpler to do your work in three stages
 
-1. **Convert to using _struct_'s**
+1. **Convert to using `struct`'s**
 
-You need to make many syntactic changes, but there are no algorithmic changes needed for the code you wrote in Lab 2 for the four database interface functions and the function _BuildDatabase_ if the array is left unsorted. 
+You need to make many syntactic changes, but there are no algorithmic changes needed for the code you wrote in Lab 2 for the four database interface functions and the function `BuildDatabase` if the array is left unsorted. 
 
-Our recommendation is that you take the bodies of your Lab 2 implementations for these five functions, paste them inside the corresonding Lab 3 functions, and make the syntactic changes that are necessary.  For now, assume that the user only types in a single word as in Lab 2 so you can do a quick, rough implementation of _AnalyzeReview_ which simply calls _FindWordInDatabase_ to get the score for _review_.
+Our recommendation is that you take the bodies of your Lab 2 implementations for these five functions, paste them inside the corresponding Lab 3 functions, and make the syntactic changes that are necessary.  For now, assume that the user only types in a single word as in Lab 2 so you can do a quick, rough implementation of `AnalyzeReview` which simply calls `FindWordInDatabase` to get the score for `review`.
 
 Once you have done this, your implementation should work just like in Lab 2.
 
