@@ -69,31 +69,31 @@ Once you have done this, your implementation should work just like in Lab 2.
 
 2. **Change to storing in sorted order**
 
-To store in sorted order means making changes to _AddWordToDatabase_ and _FindWordInDatabase_.  Both routines should be changed to use binary search.  You should design a subfunction that performs binary search that is called by both functions.
+To store in sorted order means making changes to `AddWordToDatabase` and `FindWordInDatabase`.  Both routines should be changed to use binary search.  You should design a sub-function that performs binary search that is called by both functions.
 
 Make sure your binary search routine gives you this information:
  
-*	whether it found the element.
-*	If it found it, it should also give you the index into the _Record_ array where it was found
-* If it didn’t find it, it should instead give you the index into the _Record_ array where it should be inserted
+* whether it found the element.
+* If it found it, it should also give you the index into the `Record` array where it was found
+* If it did not find it, it should instead give you the index into the `Record` array where it should be inserted
  
-For this binary search routine, make sure that any _struct_ or object parameters are passed by reference.  If the _struct_ or object parameters are not modified, declare them _const_.
+For this binary search routine, make sure that any `struct` or object parameters are passed by reference.  If the `struct` or object parameters are not modified, declare them `const`.
 
 Although there is a library routine you could call to perform binary search, in this lab to receive full points you are expected to implement it from scratch.
 
-Once you have the binary search function implemented, your new _FindWordInDatabase_ should become very simple.  
+Once you have the binary search function implemented, your new `FindWordInDatabase` should become very simple.  
 
-The function _AddWordToDatabase_ will take more work.  This function first performs a binary search to find if word already appears in the array.  If it is found, as before,  it increments the corresponding occurrence count by 1, adds the score to the score total, and returns true.  
+The function `AddWordToDatabase` will take more work.  This function first performs a binary search to find if word already appears in the array.  If it is found, as before, it increments the corresponding occurrence count by 1, adds the score to the score total, and returns `true`.  
 
-If it doesn’t find word in the words array, it will make sure that the number of elements stored hasn’t reach its maximum.  If this is the case, it simply returns false to signal failure. 
+If it doesn’t find word in the words array, it will make sure that the number of elements stored hasn’t reach its maximum.  If this is the case, it simply returns `false` to signal failure. 
 
-Otherwise, if the index where binary search says you should insert the word is not at the end of the array, it will make room in the array by copying the elements occurring at or after that index one record further down the array.  Make sure you your copy starts at the end of the array of records and works upward!  Then it will insert word in its record with count 1 and score as specified by the parameter.    Don’t forget to increase the count of elements in the array!  You should return true to indicate success.
+Otherwise, if the index where binary search says you should insert the word is not at the end of the array, it will make room in the array by copying the elements occurring at or after that index one record further down the array.  Make sure you your copy starts at the end of the array of records and works upward!  Then it will insert word in its record with count 1 and score as specified by the parameter. Don’t forget to increase the count of elements in the array!  You should return `true` to indicate success.
 
-3. **Full implementation of _AnalyzeReview_**
+3. **Full implementation of `AnalyzeReview`**
 
 Now it is time to extend the implementation of this function from the one done in Stage 1.  
 
-Change the function so it break the _review_ text into “words.”  It should look up each “word” in the database to get its average score, and then average the average scores.   The good news is that the line break logic is the same as used in _BuildDatabase_, so there are not a lot of new algorithmic ideas here.
+Change the function so it break the _review_ text into “words.”  It should look up each “word” in the database to get its average score, and then average the average scores.   The good news is that the line break logic is the same as used in `BuildDatabase`, so there are not a lot of new algorithmic ideas here.
 
 ## Testing
 
@@ -108,7 +108,7 @@ Your program needs to be orderly and readable.  If you are working a development
   *	Meaningful names of identifiers
   *	Naming conventions for identifiers (camelCase for variables, CamelCase for function names. First word of a function name typically should be a verb.)
   *	No use of global variables. Global variables sometimes are appropriate, but not in the assignments we will be giving this quarter.
-  *	Making sure *struct* and object parameters are passed by reference (and declared const if appropriate)
+  *	Making sure `struct` and object parameters are passed by reference (and declared const if appropriate)
   
 ## Documentation
     
@@ -146,7 +146,7 @@ Your solution should be contained within files that were provided.  You MUST NOT
 
 Make sure you test your code thoroughly.  We will try your code with our own test files, and we will programmatically test your database ADT with our own test program.  
 
-Your code needs to be submitted through GitHub Classroom.  You will need to push your last version of your program before the lab deadline. As a good programming practice remember to commit frequently and to push every time you have a functioning version of your code.
+Your code needs to be submitted through GitHub.  You will need to push your last version of your program before the lab deadline. As a good programming practice remember to commit frequently and to push every time you have a functioning version of your code.
 
 ## Grading
 Correctness is essential.  Make sure your solution builds as described above and correctly handles the test cases displayed in the screen shot.  We will test on other input values as well. Your code must compile and should not have runtime errors (crash).
@@ -176,3 +176,5 @@ The following aspects are going to be consider during grading. Make sure you com
 - The program outputs the information in the specified format
 - The assignment follows all the instructions
 - In general the program does not crash 
+
+Refer to the Rubrics PPT on Canvas to refresh how Lab Assignments are graded.
