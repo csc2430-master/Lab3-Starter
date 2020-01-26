@@ -18,21 +18,22 @@ using namespace std;
 const int CAPACITY  = 20000;
 
 // The main program should not include any code that uses the data definition
-typedef struct {
+struct Record {
     string word;
     int occurrenceCount;
     int scoreTotal;
-} Record;
+};
 
-typedef struct {
+struct Database {
     Record records[CAPACITY];
     int countWords;
-} Database;
+};
 
 void InitDatabase(Database& database);
 bool AddWordToDatabase(Database& database, const string& word, int score);
 void FindWordInDatabase(const Database &database, const string& word, int& occurrences, double& averageScore);
 void GetInfoAboutDatabase(const Database &database,
         int& numberWords, int& maxOccurrences, int& minOccurrences, double& maxScore, double& minScore);
+bool CheckDatabaseConsistency(Database& database);
 
 #endif //SENTIMENT_ANALYSIS_DATABASE_H

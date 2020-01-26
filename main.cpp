@@ -55,11 +55,16 @@ int main() {
     // Build database from movie review file
     start = chrono::steady_clock::now();
     if (!BuildDatabase(fileName, database)) {
-        cout << "Database build failure -- you may need to increase the value of CAPACITY." << endl;
-        return 0;
+        return 1;
     }
     end = chrono::steady_clock::now();
     cout << chrono::duration<double,milli>(end-start).count() << "ms" << endl;
+
+    // Check database consistency, i.e. that it is sorted and counts are positive
+    if (!CheckDatabaseConsistency(database)) {
+        cerr << "Database fails consistency check" << endl;
+        return 2;
+    }
 
     // Display some information about the database to
     // check if it seems correct
@@ -82,6 +87,7 @@ int main() {
         cout << "Enter review you want to analyze: ";
         getline(cin, review);
     }
+    return 0;
 }
 
 // Reads the file consisting of movie review -- one per line, with numerical rating at the start of
@@ -92,9 +98,10 @@ int main() {
 //      database - the word database
 // Returns:
 //      true indicates database successfully built, false indicates a problem
-//  Possible Errors:
-//      could not read file
-//      database full
+// Error Handling:
+//      THe function will print an appropriate error message to cerr and return false in these two cases
+//          - the file could not be opened
+//          - the database capacity isn't  large enough to fit all words in the review file
 bool BuildDatabase(const string& fileName, Database& database) {
     assert(false);
 }
@@ -106,8 +113,6 @@ bool BuildDatabase(const string& fileName, Database& database) {
 //      review - the movie review text
 // Returns:
 //      true indicates database successfully built, false indicates a problem
-// Possible Errors:
-//      none
 double AnalyzeReview(const Database& database, const string& review) {
     assert(false);
 }

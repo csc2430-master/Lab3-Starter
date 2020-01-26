@@ -24,9 +24,9 @@ In this lab, you are given all the files you will need for your CLion project.
 
 *	**main.cpp** – This file contains a completed main routine (which should not be modified) and a skeleton of the functions `BuildDatabase` and `AnalyzeReview` that you need to write.
 
-*	**database.h** – This file has been completed for you.  It declares the four database interface functions used to access the database ADT.  These functions will be implemented in **database.cpp**.  This file should not be modified.
+*	**database.h** – This file has been completed for you.  It declares new versions of the four database interface functions from Lab 2. In addition, the declaration of a fifth database interface function for checking database consistency has been added.  These functions will be implemented in **database.cpp**.  This file should not be modified.
 
-*	**database.cpp** – As in Lab 2, except for `#include` and the definition of the constant `neutral`, the rest of this file’s implementation is left up to you.  You should finish the header comment for the file and add implementations for the four database interface functions.   Make sure a header comment precedes each of these four functions. 
+*	**database.cpp** – As in Lab 2, this file contains an `#include` line and the definition of the constant `neutral`. In addition, the implementation of the database interface function for checking consistency has been supplied for you.  Your job in this file is to 1) finish the header comment for the file, 2) Add implementations for the four database interface functions.     Make sure a header comment precedes each of these four functions. 
 
 ##	The new database data definition
 
@@ -37,20 +37,20 @@ In addition, when we pass the database as a parameter, we only have to pass a re
 The `Database` `struct` consists of an array of `Record` `struct`’s and the count of the number of elements in the database:
 
 ```
-typedef struct {
+struct Database {
     Record records[CAPACITY];
     int countWords;
-} Database;
+};
 ```
 
 The `Record` `struct` consists of one `word` along with its occurrence count and the total of its scores.  Grouping them together like this is more natural than using parallel arrays.
 
 ```
-typedef struct {
+struct Record {
     string word;
     int occurrenceCount;
     int scoreTotal;
-} Record;
+};
 ```
 
 Note: in the given code on file **database.h** you will see that `Record` is defined *before* `Database`.
@@ -61,11 +61,15 @@ It will probably be simpler to do your work in three stages
 
 1. **Convert to using `struct`'s**
 
-You need to make many syntactic changes, but there are no algorithmic changes needed for the code you wrote in Lab 2 for the four database interface functions and the function `BuildDatabase` if the array is left unsorted. 
+**database.cpp**: You need to make many syntactic changes, but there are no algorithmic changes needed for the code you wrote in Lab 2 for the four database interface functions in this first stage as long as you keep the word array unsorted.
 
-Our recommendation is that you take the bodies of your Lab 2 implementations for these five functions, paste them inside the corresponding Lab 3 functions, and make the syntactic changes that are necessary.  For now, assume that the user only types in a single word as in Lab 2 so you can do a quick, rough implementation of `AnalyzeReview` which simply calls `FindWordInDatabase` to get the score for `review`.
+Our recommendation is that you copy your Lab 2 implementations of these four functions into `database.cpp` and make the necessary syntactic changes.  
 
-Once you have done this, your implementation should work just like in Lab 2.
+**main.cpp**: You can also do something similar for `BuildDatabase`.  There is small change in error handling from Lab 2 to Lab 3.  In Lab 2 the `main` function printed an error message when the database was full.  That was a poor design choice.  In Lab 3, the `main` function no longer prints an error message for this case.  Instead, `BuildDatabase` is responsible for printing appropriate error messages when a error occurs.  The error message should be written to `cerr` (not `cout`).
+
+For this stage, assume that the user only types in a single word as in Lab 2 so you can do a quick, rough implementation of `AnalyzeReview` which simply calls `FindWordInDatabase` to get the score for `review`.
+
+Once you have done this, your implementation should work just like in Lab 2, except the error handling will be better when the review file cannot be opened.
 
 2. **Change to storing in sorted order**
 
@@ -98,6 +102,10 @@ Change the function so it break the _review_ text into “words.”  It should l
 ## Testing
 
 Make sure you test your code thoroughly.  For your convenience, we've included the same four test files from Lab 2: **noReviews.txt**, **aFewReviews.txt**, **tooManyReviews.txt**, and **movieReviews.txt**.  
+
+In addition, make sure that you test the case when the review file cannot opened.  This case should be handled gracefully.
+
+![Lab 3 Non-existent File](/images/image3.png)
 
 ## Style
 
